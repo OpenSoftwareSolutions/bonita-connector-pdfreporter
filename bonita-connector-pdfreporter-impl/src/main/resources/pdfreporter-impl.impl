@@ -2,11 +2,11 @@
 <implementation:connectorImplementation xmlns:implementation="http://www.bonitasoft.org/ns/connector/implementation/6.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-	<definitionId>jasper</definitionId>
+	<definitionId>pdfreporter</definitionId>
 	<definitionVersion>$definition.version$</definitionVersion>
 	<description>Implementation based on PDFReporter 1.1.4</description>
 	<implementationClassname>org.bonitasoft.connectors.pdfreporter.CreatePDFReport</implementationClassname>
-	<implementationId>jasper-impl</implementationId>
+	<implementationId>pdfreporter-impl</implementationId>
 	<implementationVersion>$implementation.version$</implementationVersion>
 
 $Dependencies$

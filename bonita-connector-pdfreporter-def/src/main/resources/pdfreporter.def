@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definition:ConnectorDefinition xmlns:definition="http://www.bonitasoft.org/ns/connector/definition/6.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<id>jasper</id>
+	<id>pdfreporter</id>
 	<version>$definition.version$</version>
-	<icon>jasper.png</icon>
+	<icon>pdfreporter.png</icon>
 
 	<category id="reporting" icon="Reporting.png"/>
-	<category id="Jasper" icon="jasper.png" parentCategoryId="reporting" />
+	<category id="PDFReporter" icon="pdfreporter.png" parentCategoryId="reporting" />
 
 	<input name="dbDriver" type="java.lang.String" defaultValue="com.mysql.jdbc.Driver" />
 	<input name="jdbcUrl" type="java.lang.String" defaultValue="jdbc:mysql://localhost/your_database_name" />
