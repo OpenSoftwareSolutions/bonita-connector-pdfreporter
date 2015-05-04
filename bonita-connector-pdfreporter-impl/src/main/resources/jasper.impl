@@ -5,7 +5,7 @@
 	<definitionId>jasper</definitionId>
 	<definitionVersion>$definition.version$</definitionVersion>
 	<description>Implementation based on PDFReporter 1.1.4</description>
-	<implementationClassname>org.bonitasoft.connectors.pdfreporter.CreatePDFReportFromDataBase</implementationClassname>
+	<implementationClassname>org.bonitasoft.connectors.pdfreporter.CreatePDFReport</implementationClassname>
 	<implementationId>jasper-impl</implementationId>
 	<implementationVersion>$implementation.version$</implementationVersion>
 

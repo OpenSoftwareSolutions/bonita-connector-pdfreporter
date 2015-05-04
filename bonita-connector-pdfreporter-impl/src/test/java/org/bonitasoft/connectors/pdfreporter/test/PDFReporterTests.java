@@ -18,7 +18,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author Magnus Karlsson
  */
 @RunWith(Suite.class)
-@SuiteClasses({ CreatePDFReportFromDataBaseTest.class })
+@SuiteClasses({ CreatePDFReportTest.class })
 public class PDFReporterTests {
 
 }

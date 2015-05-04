@@ -39,6 +39,7 @@ import org.oss.pdfreporter.engine.JasperFillManager;
 import org.oss.pdfreporter.engine.JasperPrint;
 import org.oss.pdfreporter.engine.JasperReport;
 import org.oss.pdfreporter.registry.ApiRegistry;
+import org.oss.pdfreporter.repo.RepositoryManager;
 import org.oss.pdfreporter.sql.IConnection;
 import org.oss.pdfreporter.sql.SQLException;
 import org.oss.pdfreporter.sql.SqlFactory;
@@ -46,7 +47,7 @@ import org.oss.pdfreporter.sql.SqlFactory;
 /**
  * @author Magnus Karlsson
  */
-public class CreatePDFReportFromDataBase extends AbstractConnector {
+public class CreatePDFReport extends AbstractConnector {
 
 	// input parameters
 	private static final String DB_DRIVER = "dbDriver";
@@ -83,6 +84,10 @@ public class CreatePDFReportFromDataBase extends AbstractConnector {
 	private Logger LOGGER = Logger.getLogger(this.getClass().getName());
 
 	private static IConnection conn = null;
+
+	private static final String RESOURCES = "src/main/java";
+
+	private static final String PDF_TEMP_FILE = "temp.pdf";
 
 	public Object getResult() {
 		return getOutputParameters().get(REPORT_DOC_VALUE);
@@ -224,7 +229,10 @@ public class CreatePDFReportFromDataBase extends AbstractConnector {
 		if (LOGGER.isLoggable(Level.INFO)) {
 			LOGGER.info("Creating a new PDFReporter from database");
 		}
-
+		ApiRegistry.initSession();
+		// load resources
+		RepositoryManager repo = RepositoryManager.getInstance();
+		repo.setDefaultResourceFolder(RESOURCES);
 		try {
 			final JasperReport report = JasperCompileManager.compileReport(new ByteArrayInputStream(jrxmlContent));
 			final Map<String, Object> typedParameters = getTypedParameters(report, parameters);
@@ -232,10 +240,9 @@ public class CreatePDFReportFromDataBase extends AbstractConnector {
 
 			byte[] content;
 			String suffix = "." + "pdf";
-			String pathToPdfFile = "temp_pdf" + ".pdf";
-			JasperExportManager.exportReportToPdfFile(print, pathToPdfFile);
+			JasperExportManager.exportReportToPdfFile(print, PDF_TEMP_FILE);
 
-			File tempFile = new File(pathToPdfFile);
+			File tempFile = new File(PDF_TEMP_FILE);
 			content = FileUtils.readFileToByteArray(tempFile);
 			String mimeType = "application/pdf";
 
@@ -247,7 +254,8 @@ public class CreatePDFReportFromDataBase extends AbstractConnector {
 			}
 			throw e;
 		} finally {
-			// TODO remove pdf file created
+			// delete temp file.
+			new File(PDF_TEMP_FILE).delete();
 			try {
 				if (conn != null) {
 					conn.close();
@@ -331,6 +339,7 @@ public class CreatePDFReportFromDataBase extends AbstractConnector {
 					final Boolean typedValue = Boolean.parseBoolean(value);
 					typedParameters.put(paramName, typedValue);
 				}
+
 			}
 		}
 		return typedParameters;

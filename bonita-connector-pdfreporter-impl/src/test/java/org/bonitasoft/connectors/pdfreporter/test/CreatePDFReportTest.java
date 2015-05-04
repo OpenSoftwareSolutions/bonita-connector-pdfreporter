@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import org.bonitasoft.connectors.pdfreporter.CreatePDFReportFromDataBase;
+import org.bonitasoft.connectors.pdfreporter.CreatePDFReport;
 import org.bonitasoft.engine.api.APIAccessor;
 import org.bonitasoft.engine.api.ProcessAPI;
 import org.bonitasoft.engine.bpm.document.DocumentNotFoundException;
@@ -56,7 +56,7 @@ import org.junit.runner.Description;
 /**
  * @author Magnus Karlsson
  */
-public class CreatePDFReportFromDataBaseTest {
+public class CreatePDFReportTest {
 
     // input parameters
     final String DB_DRIVER = "dbDriver";
@@ -85,7 +85,7 @@ public class CreatePDFReportFromDataBaseTest {
 
     private static Server hsqlServer = null;
 
-    protected static final Logger LOG = Logger.getLogger(CreatePDFReportFromDataBaseTest.class.getName());
+    protected static final Logger LOG = Logger.getLogger(CreatePDFReportTest.class.getName());
 
     EngineExecutionContext engineExecutionContext;
 
@@ -133,7 +133,7 @@ public class CreatePDFReportFromDataBaseTest {
     @Test(expected = ConnectorValidationException.class)
     public void testNullParameter() throws Exception {
         getMockedContext();
-        final CreatePDFReportFromDataBase connector = getWorkingConnector();
+        final CreatePDFReport connector = getWorkingConnector();
         final String wrongDbDriver = null;
         final Map<String, Object> inputs = new HashMap<String, Object>();
         inputs.put(DB_DRIVER, wrongDbDriver);
@@ -149,7 +149,7 @@ public class CreatePDFReportFromDataBaseTest {
     @Test(expected = ConnectorValidationException.class)
     public void testWrongDbDriver() throws Exception {
         getMockedContext();
-        final CreatePDFReportFromDataBase connector = getWorkingConnector();
+        final CreatePDFReport connector = getWorkingConnector();
         final String wrongDbDriver = WRONG_DB_DRIVER;
         final Map<String, Object> inputs = new HashMap<String, Object>();
         inputs.put(DB_DRIVER, wrongDbDriver);
@@ -167,7 +167,7 @@ public class CreatePDFReportFromDataBaseTest {
     @Test(expected = ConnectorValidationException.class)
     public void testWrongJrxmlDocument() throws Exception {
         getMockedContext();
-        final CreatePDFReportFromDataBase connector = getWorkingConnector();
+        final CreatePDFReport connector = getWorkingConnector();
         final String wrongJrxmlDoc = WRONG_JRXML_DOC;
         final Map<String, Object> inputs = new HashMap<String, Object>();
         inputs.put(JRXML_DOC, wrongJrxmlDoc);
@@ -183,7 +183,7 @@ public class CreatePDFReportFromDataBaseTest {
     @Test(expected = ConnectorValidationException.class)
     public void testWrongJdbcUrl() throws Exception {
         getMockedContext();
-        final CreatePDFReportFromDataBase connector = getWorkingConnector();
+        final CreatePDFReport connector = getWorkingConnector();
         final String wrongJdbcUrl = WRONG_JDBC_URL;
         final Map<String, Object> inputs = new HashMap<String, Object>();
         inputs.put(JDBC_URL, wrongJdbcUrl);
@@ -199,7 +199,7 @@ public class CreatePDFReportFromDataBaseTest {
     @Test(expected = ConnectorValidationException.class)
     public void testWrongDbUser() throws Exception {
         getMockedContext();
-        final CreatePDFReportFromDataBase connector = getWorkingConnector();
+        final CreatePDFReport connector = getWorkingConnector();
         connector.validateInputParameters();
         final String wrongUserName = WRONG_USERNAME;
         final Map<String, Object> inputs = new HashMap<String, Object>();
@@ -216,7 +216,7 @@ public class CreatePDFReportFromDataBaseTest {
     @Test(expected = ConnectorValidationException.class)
     public void testWrongDbPassword() throws Exception {
         getMockedContext();
-        final CreatePDFReportFromDataBase connector = getWorkingConnector();
+        final CreatePDFReport connector = getWorkingConnector();
         final String wrongPassword = WRONG_PASSWORD;
         final Map<String, Object> inputs = new HashMap<String, Object>();
         inputs.put(PASSWORD, wrongPassword);
@@ -230,7 +230,7 @@ public class CreatePDFReportFromDataBaseTest {
     @Test
     public void testCreateAReportFail() throws Exception {
         getMockedContext();
-        final CreatePDFReportFromDataBase connector = getWorkingConnector();
+        final CreatePDFReport connector = getWorkingConnector();
         final Map<String, Object> inputs = new HashMap<String, Object>();
         inputs.put(PASSWORD, "wrong_password");
         connector.setInputParameters(inputs);
@@ -252,11 +252,11 @@ public class CreatePDFReportFromDataBaseTest {
 
         getMockedContext();
 
-        CreatePDFReportFromDataBase connector = getWorkingConnector();
+        CreatePDFReport connector = getWorkingConnector();
         connector.validateInputParameters();
         connector.execute();
         byte[] reportContent = ((DocumentValue) connector.getResult()).getContent();
-        File contentFile = File.createTempFile("jasperReport", ".pdf");
+        File contentFile = File.createTempFile("pdfreporter", ".pdf");
         FileOutputStream fos = new FileOutputStream(contentFile.getCanonicalPath());
         fos.write(reportContent);
         fos.close();
@@ -294,9 +294,9 @@ public class CreatePDFReportFromDataBaseTest {
         when(processAPI.getDocumentContent("1L")).thenReturn(fileContent);
     }
 
-    private CreatePDFReportFromDataBase getWorkingConnector() throws Exception {
+    private CreatePDFReport getWorkingConnector() throws Exception {
 
-        final CreatePDFReportFromDataBase connector = new CreatePDFReportFromDataBase();
+        final CreatePDFReport connector = new CreatePDFReport();
         final Map<String, Object> inputs = new HashMap<String, Object>();
 
         // Database access information

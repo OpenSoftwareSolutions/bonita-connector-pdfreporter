@@ -22,7 +22,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="24"/>
 				</textElement>
-				<text><![CDATA[Rapport Test]]></text>
+				<text><![CDATA[PDFReporter]]></text>
 			</staticText>
 		</band>
 	</title>
