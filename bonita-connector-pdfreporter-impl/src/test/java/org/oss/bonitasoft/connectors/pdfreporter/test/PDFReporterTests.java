@@ -8,7 +8,7 @@
  * Contributors:
  *     Open Software Solutions GmbH - initial API and implementation
  ******************************************************************************/
-package org.bonitasoft.connectors.pdfreporter.test;
+package org.oss.bonitasoft.connectors.pdfreporter.test;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

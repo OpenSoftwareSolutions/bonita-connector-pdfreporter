@@ -9,7 +9,7 @@
  *     Open Software Solutions GmbH - initial API and implementation
  ******************************************************************************/
 
-package org.bonitasoft.connectors.pdfreporter.test;
+package org.oss.bonitasoft.connectors.pdfreporter.test;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -29,7 +29,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import org.bonitasoft.connectors.pdfreporter.CreatePDFReport;
 import org.bonitasoft.engine.api.APIAccessor;
 import org.bonitasoft.engine.api.ProcessAPI;
 import org.bonitasoft.engine.bpm.document.DocumentNotFoundException;
@@ -52,6 +51,7 @@ import org.junit.Test;
 import org.junit.rules.TestRule;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
+import org.oss.bonitasoft.connectors.pdfreporter.CreatePDFReport;
 
 /**
  * @author Magnus Karlsson

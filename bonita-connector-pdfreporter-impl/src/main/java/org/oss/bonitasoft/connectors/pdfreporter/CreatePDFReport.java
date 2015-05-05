@@ -8,7 +8,7 @@
  * Contributors:
  *     Open Software Solutions GmbH - initial API and implementation
  ******************************************************************************/
-package org.bonitasoft.connectors.pdfreporter;
+package org.oss.bonitasoft.connectors.pdfreporter;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;

@@ -4,27 +4,27 @@
 	<version>$definition.version$</version>
 	<icon>pdfreporter.png</icon>
 
-	<category id="reporting" icon="Reporting.png"/>
-	<category id="PDFReporter" icon="pdfreporter.png" parentCategoryId="reporting" />
+	<category icon="Reporting.png" id="reporting"/>
 
-	<input name="dbDriver" type="java.lang.String" defaultValue="com.mysql.jdbc.Driver" />
-	<input name="jdbcUrl" type="java.lang.String" defaultValue="jdbc:mysql://localhost/your_database_name" />
-	<input name="user" type="java.lang.String" />
-	<input name="password" type="java.lang.String" />
-	<input name="jrxmlDocument" type="java.lang.String" mandatory="true" />
-	<input name="parameters" type="java.util.List" />
+	<input defaultValue="com.mysql.jdbc.Driver" mandatory="true" name="dbDriver" type="java.lang.String"/>
+  	<input defaultValue="jdbc:mysql://localhost/your_database_name" mandatory="true" name="jdbcUrl" type="java.lang.String"/>
+  	<input name="user" type="java.lang.String"/>
+  	<input name="password" type="java.lang.String"/>
+  	<input mandatory="true" name="jrxmlDocument" type="java.lang.String"/>
+  	<input name="parameters" type="java.util.List"/>
 
 	<output name="reportDocValue" type="org.bonitasoft.engine.bpm.document.DocumentValue" />
 
 	<page id="DataBaseConfiguration">
-		<widget id="dbDriver" inputName="dbDriver" xsi:type="definition:Text" />
-		<widget id="jdbcUrl" inputName="jdbcUrl" xsi:type="definition:Text" />
-		<widget id="user" inputName="user" xsi:type="definition:Text" />
-		<widget id="password" inputName="password" xsi:type="definition:Password" />
-	</page>
+    	<widget xsi:type="definition:Text" id="dbDriver" inputName="dbDriver"/>
+    	<widget xsi:type="definition:Text" id="jdbcUrl" inputName="jdbcUrl"/>
+    	<widget xsi:type="definition:Text" id="user" inputName="user"/>
+    	<widget xsi:type="definition:Text" id="password" inputName="password"/>
+  	</page>
+
 	<page id="ReportSettings">
-		<widget id="jrxmlDocument" inputName="jrxmlDocument" xsi:type="definition:Text" showDocuments="true" />
-		<widget id="parameters" inputName="parameters" xsi:type="definition:Array" cols="2" rows="-1" fixedCols="true" fixedRows="false">
+		<widget xsi:type="definition:Text" id="jrxmlDocument" inputName="jrxmlDocument" showDocuments="true" />
+		<widget xsi:type="definition:Array" id="parameters" inputName="parameters" cols="2" rows="-1" fixedCols="true" fixedRows="false">
 			<colsCaption>name</colsCaption>
 			<colsCaption>value</colsCaption>
 		</widget>

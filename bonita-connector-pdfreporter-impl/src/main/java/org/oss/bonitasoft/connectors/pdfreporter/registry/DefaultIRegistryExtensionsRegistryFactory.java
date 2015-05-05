@@ -8,7 +8,7 @@
  * Contributors:
  *     Open Software Solutions GmbH - initial API and implementation
  ******************************************************************************/
-package org.bonitasoft.connectors.pdfreporter.registry;
+package org.oss.bonitasoft.connectors.pdfreporter.registry;
 
 import java.util.List;
 import java.util.logging.Level;
