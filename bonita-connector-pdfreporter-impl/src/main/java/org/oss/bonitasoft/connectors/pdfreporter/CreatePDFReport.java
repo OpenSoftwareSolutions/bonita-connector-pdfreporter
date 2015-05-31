@@ -232,6 +232,7 @@ public class CreatePDFReport extends AbstractConnector {
 		// load resources
 		RepositoryManager repo = RepositoryManager.getInstance();
 		repo.setDefaultResourceFolder(RESOURCES);
+		File tempFile = null;
 		try {
 			final JasperReport report = JasperCompileManager.compileReport(new ByteArrayInputStream(jrxmlContent));
 			final Map<String, Object> typedParameters = getTypedParameters(report, parameters);
@@ -240,8 +241,7 @@ public class CreatePDFReport extends AbstractConnector {
 			byte[] content;
 			String suffix = "." + "pdf";
 			JasperExportManager.exportReportToPdfFile(print, PDF_TEMP_FILE);
-
-			File tempFile = new File(PDF_TEMP_FILE);
+			tempFile = new File(PDF_TEMP_FILE);
 			content = FileUtils.readFileToByteArray(tempFile);
 			String mimeType = "application/pdf";
 
@@ -254,7 +254,7 @@ public class CreatePDFReport extends AbstractConnector {
 			throw e;
 		} finally {
 			// delete temp file.
-			new File(PDF_TEMP_FILE).delete();
+			tempFile.delete();
 			try {
 				if (conn != null) {
 					conn.close();
