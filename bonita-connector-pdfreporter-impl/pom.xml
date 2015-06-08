@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>bonita-connector-pdfreporter-impl</artifactId>
-	<version>1.2.0</version>
+	<version>1.2.1</version>
 
 	<properties>
 		<definition.version>1.2.0</definition.version>
