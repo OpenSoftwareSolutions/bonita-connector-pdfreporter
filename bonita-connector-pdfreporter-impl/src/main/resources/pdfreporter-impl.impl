@@ -5,10 +5,7 @@
 	<implementationVersion>$implementation.version$</implementationVersion>
 	<definitionId>pdfreporter</definitionId>
 	<definitionVersion>$definition.version$</definitionVersion>
-	<description>Implementation based on PDFReporter 1.1.4</description>
 	<implementationClassname>org.oss.bonitasoft.connectors.pdfreporter.CreatePDFReport</implementationClassname>
 	  <description>The library is a fork of the popular open source Jasper Reports and supports the common features provided by Jasper Reports, but offline and for mobile apps. The PDFReporter library supports iOS, Desktop and Android library.</description>
-  	<jarDependencies>
-    	<jarDependency>bonita-connectors-pdfreporter-impl-1.0.0.jar</jarDependency>
-  	</jarDependencies>
+$Dependencies$
 </implementation:connectorImplementation>
