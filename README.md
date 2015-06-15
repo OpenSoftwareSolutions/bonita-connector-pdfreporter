@@ -4,6 +4,9 @@ The library is a fork of the popular open source Jasper Reports and supports the
 # Licensing
 Apache License V2.0
 
+# Howto Integration with BonitaSoft
+[HowTo](https://github.com/OpenSoftwareSolutions/PDFReporter/wiki/PDFReporter-BonitaSoft-Integration)
+
 You can use and modify the connector as you like.
 If you want to use the PDFReporter library commercially please contact sales@pdfreporting.com for further informations. 
 
